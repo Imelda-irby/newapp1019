@@ -1,0 +1,83 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "Initialize_variable": {
+        "inputs": {
+          "variables": [
+            {
+              "name": "data",
+              "type": "object",
+              "value": {
+                "Company": "Microsoft",
+                "FirstName": "Kamlesh",
+                "LastName": "Kumar",
+                "Work": [
+                  {
+                    "Mark": 95,
+                    "skil": "BizTalk Server"
+                  },
+                  {
+                    "Mark": 95,
+                    "skil": "Logic Apps"
+                  },
+                  {
+                    "Mark": 85,
+                    "skil": "Azure"
+                  },
+                  {
+                    "Mark": 80,
+                    "skil": "OMS"
+                  },
+                  {
+                    "Mark": 70,
+                    "skil": "Share Points"
+                  },
+                  {
+                    "Mark": 95,
+                    "skil": "C Sharp"
+                  },
+                  {
+                    "Mark": 95,
+                    "skil": "SQL Server"
+                  }
+                ],
+                "department": "Interface Technology"
+              }
+            }
+          ]
+        },
+        "runAfter": {},
+        "type": "InitializeVariable"
+      },
+      "Transform_JSON_To_JSON": {
+        "inputs": {
+          "content": "@variables('data')",
+          "map": {
+            "name": "JsonToJsonTemplate.liquid",
+            "source": "LogicApp"
+          }
+        },
+        "kind": "JsonToJson",
+        "runAfter": {
+          "Initialize_variable": [
+            "Succeeded"
+          ]
+        },
+        "type": "Liquid"
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "triggers": {
+      "Recurrence": {
+        "recurrence": {
+          "frequency": "Week",
+          "interval": 15
+        },
+        "type": "Recurrence"
+      }
+    }
+  },
+  "kind": "Stateful"
+}

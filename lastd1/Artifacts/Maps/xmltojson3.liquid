@@ -1,0 +1,11 @@
+{
+    "test": [
+        {% for data in content.Root %}
+        {
+            "column1": "{{data.column1}}",
+            "column2": "{{data.column2}}"
+        },
+        {% assign fetchAttributes = "firstname,name" | split:','  %}
+        {% endfor %}
+    ]
+}

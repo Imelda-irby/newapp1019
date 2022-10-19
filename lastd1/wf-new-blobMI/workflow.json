@@ -1,0 +1,74 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "For_each": {
+        "actions": {
+          "Reads_Blob_Content_from_Azure_Storage": {
+            "inputs": {
+              "parameters": {
+                "blobName": "@item()?['name']",
+                "containerName": "@variables('container-name')"
+              },
+              "serviceProviderConfiguration": {
+                "connectionName": "AzureBlob",
+                "operationId": "readBlob",
+                "serviceProviderId": "/serviceProviders/AzureBlob"
+              }
+            },
+            "runAfter": {},
+            "type": "ServiceProvider"
+          }
+        },
+        "foreach": "@body('List_all_blobs_present_in_given_path_of_Azure_Blob_storage._2')?['blobs']",
+        "runAfter": {
+          "List_all_blobs_present_in_given_path_of_Azure_Blob_storage._2": [
+            "Succeeded"
+          ]
+        },
+        "type": "Foreach"
+      },
+      "Initialize_variable": {
+        "inputs": {
+          "variables": [
+            {
+              "name": "container-name",
+              "type": "string",
+              "value": "test1"
+            }
+          ]
+        },
+        "runAfter": {},
+        "type": "InitializeVariable"
+      },
+      "List_all_blobs_present_in_given_path_of_Azure_Blob_storage._2": {
+        "inputs": {
+          "parameters": {
+            "containerName": "test1"
+          },
+          "serviceProviderConfiguration": {
+            "connectionName": "AzureBlob-10",
+            "operationId": "listBlobs",
+            "serviceProviderId": "/serviceProviders/AzureBlob"
+          }
+        },
+        "runAfter": {
+          "Initialize_variable": [
+            "Succeeded"
+          ]
+        },
+        "type": "ServiceProvider"
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "triggers": {
+      "manual": {
+        "inputs": {},
+        "kind": "Http",
+        "type": "Request"
+      }
+    }
+  },
+  "kind": "Stateful"
+}

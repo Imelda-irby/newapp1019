@@ -1,0 +1,52 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "Checks_if_Blob_exists_in_Azure_Storage": {
+        "inputs": {
+          "parameters": {
+            "blobName": "aaa.txt",
+            "containerName": "container-la"
+          },
+          "serviceProviderConfiguration": {
+            "connectionName": "AzureBlob",
+            "operationId": "blobExists",
+            "serviceProviderId": "/serviceProviders/AzureBlob"
+          }
+        },
+        "runAfter": {},
+        "type": "ServiceProvider"
+      },
+      "Uploads_a_Blob_to_Azure_Storage": {
+        "inputs": {
+          "parameters": {
+            "blobName": "@body('Checks_if_Blob_exists_in_Azure_Storage')",
+            "containerName": "@body('Checks_if_Blob_exists_in_Azure_Storage')?['properties']?['blobType']",
+            "content": "@body('Checks_if_Blob_exists_in_Azure_Storage')"
+          },
+          "serviceProviderConfiguration": {
+            "connectionName": "AzureBlob",
+            "operationId": "uploadBlob",
+            "serviceProviderId": "/serviceProviders/AzureBlob"
+          }
+        },
+        "runAfter": {
+          "Checks_if_Blob_exists_in_Azure_Storage": [
+            "Succeeded"
+          ]
+        },
+        "type": "ServiceProvider"
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "triggers": {
+      "manual": {
+        "inputs": {},
+        "kind": "Http",
+        "type": "Request"
+      }
+    }
+  },
+  "kind": "Stateful"
+}

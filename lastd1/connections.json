@@ -1,0 +1,182 @@
+{
+  "serviceProviderConnections": {
+    "AzureBlob": {
+      "parameterValues": {
+        "connectionString": "@appsetting('AzureBlob_connectionString')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "blob-con1"
+    },
+    "AzureBlob-2": {
+      "parameterValues": {
+        "blobStorageEndpoint": "@appsetting('AzureBlob_12_blobStorageEndpoint')",
+        "authProvider": {
+          "Type": "ManagedServiceIdentity"
+        }
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "manblobconn"
+    },
+    "AzureBlob-3": {
+      "parameterValues": {
+        "blobStorageEndpoint": "@appsetting('AzureBlob_13_blobStorageEndpoint')",
+        "authProvider": {
+          "Type": "ManagedServiceIdentity"
+        }
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "container-la"
+    },
+    "Sftp": {
+      "parameterValues": {
+        "sshHostAddress": "@appsetting('Sftp_sshHostAddress')",
+        "username": "@appsetting('Sftp_username')",
+        "password": "@appsetting('Sftp_password')",
+        "portNumber": "@appsetting('Sftp_portNumber')",
+        "rootDirectory": "@appsetting('Sftp_rootDirectory')",
+        "sshPrivateKey": "@appsetting('Sftp_sshPrivateKey')",
+        "sshPrivateKeyPassphrase": "@appsetting('Sftp_sshPrivateKeyPassphrase')",
+        "sshHostKeyFingerprint": "@appsetting('Sftp_sshHostKeyFingerprint')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/Sftp"
+      },
+      "displayName": "sftp-con1"
+    },
+    "Sftp-2": {
+      "parameterValues": {
+        "sshHostAddress": "@appsetting('Sftp_12_sshHostAddress')",
+        "username": "@appsetting('Sftp_12_username')",
+        "password": "@appsetting('Sftp_12_password')",
+        "portNumber": "@appsetting('Sftp_12_portNumber')",
+        "rootDirectory": "@appsetting('Sftp_12_rootDirectory')",
+        "sshPrivateKey": "@appsetting('Sftp_12_sshPrivateKey')",
+        "sshPrivateKeyPassphrase": "@appsetting('Sftp_12_sshPrivateKeyPassphrase')",
+        "sshHostKeyFingerprint": "@appsetting('Sftp_12_sshHostKeyFingerprint')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/Sftp"
+      },
+      "displayName": "sftpcon2"
+    },
+    "sql": {
+      "parameterValues": {
+        "connectionString": "@appsetting('sql_connectionString')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/sql"
+      },
+      "displayName": "sql1"
+    },
+    "AzureBlob-4": {
+      "parameterValues": {
+        "blobStorageEndpoint": "@appsetting('AzureBlob_14_blobStorageEndpoint')",
+        "authProvider": {
+          "Type": "ManagedServiceIdentity"
+        }
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "test1-conn"
+    },
+    "AzureBlob-5": {
+      "parameterValues": {
+        "connectionString": "@appsetting('AzureBlob_15_connectionString')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "test2-con"
+    },
+    "AzureBlob-6": {
+      "parameterValues": {
+        "connectionString": "@appsetting('AzureBlob_16_connectionString')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "test3-conn"
+    },
+    "AzureBlob-7": {
+      "parameterValues": {
+        "blobStorageEndpoint": "@appsetting('AzureBlob_17_blobStorageEndpoint')",
+        "authProvider": {
+          "Type": "ManagedServiceIdentity"
+        }
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "conn4-ad"
+    },
+    "AzureBlob-8": {
+      "parameterValues": {
+        "blobStorageEndpoint": "@appsetting('AzureBlob_18_blobStorageEndpoint')",
+        "authProvider": {
+          "Type": "ManagedServiceIdentity"
+        }
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "conn4-mi"
+    },
+    "AzureBlob-9": {
+      "parameterValues": {
+        "blobStorageEndpoint": "@appsetting('AzureBlob_19_blobStorageEndpoint')",
+        "authProvider": {
+          "Type": "ManagedServiceIdentity"
+        }
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "conn-mi4"
+    },
+    "AzureBlob-10": {
+      "parameterValues": {
+        "blobStorageEndpoint": "@appsetting('AzureBlob_110_blobStorageEndpoint')",
+        "authProvider": {
+          "Type": "ManagedServiceIdentity"
+        }
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "lastcon4blobmi"
+    }
+  },
+  "managedApiConnections": {
+    "sftpwithssh": {
+      "api": {
+        "id": "/subscriptions/4ab3888f-e328-4eb0-b8bd-a632805e04fa/providers/Microsoft.Web/locations/eastus/managedApis/sftpwithssh"
+      },
+      "connection": {
+        "id": "/subscriptions/4ab3888f-e328-4eb0-b8bd-a632805e04fa/resourceGroups/newRG22/providers/Microsoft.Web/connections/sftpwithssh"
+      },
+      "connectionRuntimeUrl": "https://bad3e9384d1fdf6f.12.common.logic-eastus.azure-apihub.net/apim/sftpwithssh/74c4fef72526414097deebc0c8f32d03",
+      "authentication": {
+        "type": "ManagedServiceIdentity"
+      }
+    },
+    "office365": {
+      "api": {
+        "id": "/subscriptions/4ab3888f-e328-4eb0-b8bd-a632805e04fa/providers/Microsoft.Web/locations/eastus/managedApis/office365"
+      },
+      "connection": {
+        "id": "/subscriptions/4ab3888f-e328-4eb0-b8bd-a632805e04fa/resourceGroups/newRG22/providers/Microsoft.Web/connections/office365-1"
+      },
+      "connectionRuntimeUrl": "https://bad3e9384d1fdf6f.12.common.logic-eastus.azure-apihub.net/apim/office365/e72533c2dfdd4019991ad87aaf38aa8a",
+      "authentication": {
+        "type": "ManagedServiceIdentity"
+      }
+    }
+  }
+}

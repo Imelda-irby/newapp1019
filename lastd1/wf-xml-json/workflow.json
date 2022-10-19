@@ -1,0 +1,48 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "Initialize_variable": {
+        "inputs": {
+          "variables": [
+            {
+              "name": "data",
+              "type": "string",
+              "value": "<Root>\n<test>\n    <column1>value1</column1>\n    <column2>value2</column2>\n</test>\n<test>\n    <column1>value1</column1>\n    <column2>value2</column2>\n</test>\n</Root>"
+            }
+          ]
+        },
+        "runAfter": {},
+        "type": "InitializeVariable"
+      },
+      "Transform_XML_To_JSON": {
+        "inputs": {
+          "content": "@variables('data')",
+          "map": {
+            "name": "xmltojson3.liquid",
+            "source": "LogicApp"
+          }
+        },
+        "kind": "XmlToJson",
+        "runAfter": {
+          "Initialize_variable": [
+            "Succeeded"
+          ]
+        },
+        "type": "Liquid"
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "triggers": {
+      "Recurrence": {
+        "recurrence": {
+          "frequency": "Day",
+          "interval": 15
+        },
+        "type": "Recurrence"
+      }
+    }
+  },
+  "kind": "Stateful"
+}
